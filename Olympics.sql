@@ -51,8 +51,8 @@ FROM athlete_events A JOIN noc_regions B
 ON A.NOC=B.NOC 
 WHERE A.Medal='Gold'
 GROUP BY B.region ORDER BY 2 DESC
---No: of different age group participated --
-SELECT Age_Group,Age,Sex,COUNT(*) as Number_of_participants FROM athlete_events GROUP BY Age,Sex,Age_Group ORDER BY 1 DESC
+--Participation of female & male age groups in olympics  --
+SELECT Age_Group,Age,Sex,COUNT(*) as Number_of_participants FROM athlete_events GROUP BY Age,Sex,Age_Group ORDER BY 2 
 --Age Is Nothing but a Number--
 ALTER TABLE athlete_events
 ADD Age_Group VARCHAR(255)
