@@ -51,7 +51,8 @@ FROM athlete_events A JOIN noc_regions B
 ON A.NOC=B.NOC 
 WHERE A.Medal='Gold'
 GROUP BY B.region ORDER BY 2 DESC
-
+--No: of different age group participated --
+SELECT Age_Group,Age,Sex,COUNT(*) as Number_of_participants FROM athlete_events GROUP BY Age,Sex,Age_Group ORDER BY 1 DESC
 --Age Is Nothing but a Number--
 ALTER TABLE athlete_events
 ADD Age_Group VARCHAR(255)
@@ -63,7 +64,7 @@ WHEN Age BETWEEN 40 AND 50 THEN '40-50'
 WHEN Age BETWEEN 50 AND 60 THEN '50-60'
 WHEN Age BETWEEN 60 AND 70 THEN '60-70'
 WHEN Age BETWEEN 70 AND 80 THEN '70-80'
-WHEN Age<80 THEN 'Above 80'
+WHEN Age>80 THEN 'Above 80'
 ELSE 'Not Defined' END 
 
 SELECT * FROM athlete_events WHERE Age_Group ='70-80' 
